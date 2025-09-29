@@ -22,7 +22,6 @@ The app demonstrates modern React practices including **Redux for state manageme
       "password": "cityslicka"
     }
     ```
-  - Token is securely saved and user is redirected to the User List page
 
 - **Users List**
   - Display a paginated list of users
