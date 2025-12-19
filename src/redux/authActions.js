@@ -5,24 +5,23 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 
-const API_KEY = "reqres-free-v1";
+// MockAPI base URL
+const BASE_URL = "https://6944dfb17dd335f4c36178b0.mockapi.io";
 
 export const login = (email, password, rememberMe = false) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   try {
-    const res = await axios.post(
-      "https://reqres.in/api/login",
-      { email, password },
-      { headers: { "x-api-key": API_KEY } }
-    );
-
-    const token = res.data.token;
-    const usersRes = await axios.get("https://reqres.in/api/users?per_page=12", {
-      headers: { "x-api-key": API_KEY },
+    const res = await axios.get(`${BASE_URL}/authUsers`, {
+      params: { email, password },
     });
 
-    const user = usersRes.data.data.find((u) => u.email === email);
-    const userName = user ? `${user.first_name} ${user.last_name}` : "";
+    if (res.data.length === 0) {
+      throw new Error("Invalid email or password");
+    }
+
+    const user = res.data[0];
+    const token = user.token;
+    const userName = user.name;
     const storage = rememberMe ? localStorage : sessionStorage;
     storage.setItem("auth", JSON.stringify({ token, userName }));
 

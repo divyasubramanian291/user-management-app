@@ -13,8 +13,8 @@ export default function LoginPage() {
 
   const storedAuth = JSON.parse(localStorage.getItem("auth")) || JSON.parse(sessionStorage.getItem("auth"));
 
-  const [email, setEmail] = useState(storedAuth?.userName ? storedAuth.userName : "eve.holt@reqres.in");
-  const [password, setPassword] = useState("cityslicka");
+  const [email, setEmail] = useState(storedAuth?.userName ? storedAuth.userName : "");
+  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(!!localStorage.getItem("auth"));
 
   useEffect(() => {
