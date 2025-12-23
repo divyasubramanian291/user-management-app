@@ -18,7 +18,7 @@ The app demonstrates modern React practices including **Redux for state manageme
   - Default credentials:  
     ```json
     {
-      "email": "eve.holt@reqres.in",
+      "email": "charlie.lee@mail.com",
       "password": "cityslicka"
     }
     ```
@@ -55,7 +55,7 @@ The app demonstrates modern React practices including **Redux for state manageme
 ## Tech Stack
 
 - **Frontend:** React, React Router, Redux, Redux-thunk, Axios  
-- **API:** [Reqres.in](https://reqres.in/) (mock API)  
+- **API:** [MockAPI.io](https://mockapi.io/) (mock API)  
 - **Styling:** CSS / optionally UI kit (e.g., Material-UI or Styled Components)  
 - **Other:** ES6+, modern JavaScript features
 
