@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, Button, Box, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -6,14 +6,18 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function UserCards({ users, onEdit, onDelete }) {
-  const [page, setPage] = useState(1);
-  const rowsPerPage = 8;
-  const totalPages = Math.ceil(users.length / rowsPerPage);
+const [page, setPage] = useState(1);
+const rowsPerPage = 8;
+const totalPages = Math.ceil(users.length / rowsPerPage);
 
-  const paginatedUsers = users.slice(
-    (page - 1) * rowsPerPage,
-    page * rowsPerPage
-  );
+useEffect(() => {
+  setPage(1);
+}, [users]);
+
+const paginatedUsers = users.slice(
+  (page - 1) * rowsPerPage,
+  page * rowsPerPage
+);
 
   return (
     <div>

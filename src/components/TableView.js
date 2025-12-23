@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -14,14 +14,18 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function UserTable({ users, onEdit, onDelete }) {
-  const [page, setPage] = useState(1);
-  const rowsPerPage = 5;
-  const totalPages = Math.ceil(users.length / rowsPerPage);
+ const [page, setPage] = useState(1);
+const rowsPerPage = 5;
+const totalPages = Math.ceil(users.length / rowsPerPage);
 
-  const paginatedUsers = users.slice(
-    (page - 1) * rowsPerPage,
-    page * rowsPerPage
-  );
+useEffect(() => {
+  setPage(1);
+}, [users]);
+
+const paginatedUsers = users.slice(
+  (page - 1) * rowsPerPage,
+  page * rowsPerPage
+);
 
   return (
     <TableContainer component={Paper}>
